@@ -1,19 +1,26 @@
 package com.S2T.Share_2_Teach.controller;
 
+import com.S2T.Share_2_Teach.FileStorageService;
 import com.S2T.Share_2_Teach.dto.RequestResponse;
 import com.S2T.Share_2_Teach.entity.AppUsers;
 import com.S2T.Share_2_Teach.service.UsersManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
 
 @RestController // Indicates that this class is a REST controller
 public class UserController {
 
     @Autowired
     private UsersManagementService usersManagementService; // Service for user management operations
+
+    @Autowired
+    private FileStorageService fileStorageService;
 
     // Handles user registration requests
     @PostMapping("/auth/register")
@@ -74,4 +81,15 @@ public class UserController {
         // Calls the deleteUser method of UsersManagementService and returns the response
         return ResponseEntity.ok(usersManagementService.deleteUser(userId));
     }
+
+    @PostMapping("/upload")
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("uploader") String uploader) {
+    try {
+        String fileName = fileStorageService.storeFile(file, uploader);
+        return ResponseEntity.ok("File uploaded successfully: " + fileName);
+    } catch (IOException e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload file");
+    }
+}
+
 }

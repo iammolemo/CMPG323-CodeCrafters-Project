@@ -11,7 +11,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import java.io.IOException;
 
 @RestController // Indicates that this class is a REST controller
 public class UserController {
@@ -81,15 +80,4 @@ public class UserController {
         // Calls the deleteUser method of UsersManagementService and returns the response
         return ResponseEntity.ok(usersManagementService.deleteUser(userId));
     }
-
-    @PostMapping("/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("uploader") String uploader) {
-    try {
-        String fileName = fileStorageService.storeFile(file, uploader);
-        return ResponseEntity.ok("File uploaded successfully: " + fileName);
-    } catch (IOException e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload file");
-    }
-}
-
 }

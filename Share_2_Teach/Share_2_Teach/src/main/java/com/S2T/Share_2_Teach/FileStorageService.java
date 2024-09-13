@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,16 +26,40 @@ public class FileStorageService {
         Files.createDirectories(this.fileStorageLocation);
     }
 
-    public String storeFile(MultipartFile file, String uploader) throws IOException {
-        String fileName = file.getOriginalFilename();
-        Path targetLocation = this.fileStorageLocation.resolve(fileName);
-        Files.copy(file.getInputStream(), targetLocation);
+    public FileEntity storeFile(MultipartFile file, String uploadedBy) throws IOException {
+        FileEntity fileEntity = new FileEntity();
+        fileEntity.setFileName(file.getOriginalFilename());
+        fileEntity.setFileType(file.getContentType());
+        fileEntity.setData(file.getBytes());
+        fileEntity.setUploadDate(new Date());
+        fileEntity.setUploadedBy(uploadedBy);
+        fileEntity.setStatus("Pending");
 
-        // Save file metadata in the database
-        FileEntity fileEntity = new FileEntity(fileName, file.getContentType(), uploader, targetLocation.toString());
-        fileRepository.save(fileEntity);
+        return fileRepository.save(fileEntity);
+    }
 
-        return fileName;
+    public Optional<FileEntity> getFile(Long fileId) {
+        return fileRepository.findById(fileId);
+    }
+
+    public List<FileEntity> getAllFiles() {
+        return fileRepository.findAll();
+    }
+
+    public List<FileEntity> getPendingFiles() {
+        return fileRepository.findByStatus("Pending");
+    }
+
+    public FileEntity approveFile(Long fileId) {
+        FileEntity file = fileRepository.findById(fileId).orElseThrow(() -> new RuntimeException("File not found"));
+        file.setStatus("Approved");
+        return fileRepository.save(file);
+    }
+
+    public FileEntity rejectFile(Long fileId) {
+        FileEntity file = fileRepository.findById(fileId).orElseThrow(() -> new RuntimeException("File not found"));
+        file.setStatus("Rejected");
+        return fileRepository.save(file);
     }
 
 }

@@ -5,12 +5,10 @@ import com.S2T.Share_2_Teach.dto.RequestResponse;
 import com.S2T.Share_2_Teach.entity.AppUsers;
 import com.S2T.Share_2_Teach.service.UsersManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @RestController // Indicates that this class is a REST controller
 public class UserController {
@@ -19,7 +17,10 @@ public class UserController {
     private UsersManagementService usersManagementService; // Service for user management operations
 
     @Autowired
-    private FileStorageService fileStorageService;
+    public FileStorageService fileStorageService;
+
+    public UserController() {
+    }
 
     // Handles user registration requests
     @PostMapping("/auth/register")

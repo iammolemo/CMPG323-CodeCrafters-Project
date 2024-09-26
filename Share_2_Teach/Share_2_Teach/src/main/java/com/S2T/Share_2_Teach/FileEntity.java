@@ -1,8 +1,13 @@
 package com.S2T.Share_2_Teach;
 
-import jakarta.persistence.*;
-
 import java.util.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "files")
@@ -22,6 +27,7 @@ public class FileEntity {
     private String filePath;
     private boolean isApproved = false; // For moderation
     private String status; // "Pending", "Approved", "Rejected"
+    private String tags; // this will be used to store tags for each file
 
     // Constructors, Getters, and Setters
 
@@ -94,6 +100,14 @@ public class FileEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 }
      

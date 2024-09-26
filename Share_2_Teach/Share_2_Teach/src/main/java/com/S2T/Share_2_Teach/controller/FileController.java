@@ -17,14 +17,14 @@ public class FileController {
     private FileStorageService fileStorageService;
 
    // Endpoint for file upload
-   @PostMapping("/upload")
-   public ResponseEntity<FileEntity> uploadFile(@RequestParam("file") MultipartFile file,
-                                                @RequestParam("uploadedBy") String uploadedBy) {
+   
+@PostMapping("/upload")
+   public ResponseEntity<FileEntity> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("uploadedBy") String uploadedBy) {
        try {
-           FileEntity fileEntity = fileStorageService.storeFile(file, uploadedBy);
+           FileEntity fileEntity = fileStorageService.storeFile(file, uploadedBy, uploadedBy);
            return new ResponseEntity<>(fileEntity, HttpStatus.OK);
        } catch (IOException e) {
-           return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+           return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR );
        }
    }
 
@@ -41,6 +41,7 @@ public class FileController {
    }
 
     // Approve a file
+    @SuppressWarnings("null")
     @PutMapping("/approve/{id}")
     public ResponseEntity<FileEntity> approveFile(@PathVariable Long id) {
         try {
@@ -52,7 +53,8 @@ public class FileController {
     }
 
      // Reject a file
-     @PutMapping("/reject/{id}")
+     @SuppressWarnings("null")
+    @PutMapping("/reject/{id}")
      public ResponseEntity<FileEntity> rejectFile(@PathVariable Long id) {
          try {
              FileEntity fileEntity = fileStorageService.rejectFile(id);

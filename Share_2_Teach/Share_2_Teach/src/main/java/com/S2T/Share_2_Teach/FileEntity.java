@@ -1,52 +1,31 @@
 package com.S2T.Share_2_Teach;
 
-import java.util.Date;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "files")
 public class FileEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String fileName;
+    private String fileType;
+
     @Lob
     private byte[] data;
 
-    private String fileName;
-    private String fileType;
+    private LocalDateTime uploadDate;
     private String uploadedBy;
-    private Date uploadDate;
-    private String filePath;
-    private boolean isApproved = false; // For moderation
-    private String status; // "Pending", "Approved", "Rejected"
-    private String tags; // this will be used to store tags for each file
+    private String tags;
+    private String subject;  // Added subject field
+    private String grade;    // Added grade field
+    private String status;
 
-    // Constructors, Getters, and Setters
+    // Getters and setters
 
-    // Default Constructor (Required for JPA)
-    public FileEntity() {
-    }
-
-    public FileEntity(Long id, String fileName, String fileType, byte[] data, Date uploadDate, String uploadedBy, String status) {
-        this.id = id;
-        this.fileName = fileName;
-        this.fileType = fileType;
-        this.data = data;
-        this.uploadDate = uploadDate;
-        this.uploadedBy = uploadedBy;
-        this.status = status; 
-    }
-
-     // Getters and Setters
-     public Long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -78,11 +57,11 @@ public class FileEntity {
         this.data = data;
     }
 
-    public Date getUploadDate() {
+    public LocalDateTime getUploadDate() {
         return uploadDate;
     }
 
-    public void setUploadDate(Date uploadDate) {
+    public void setUploadDate(LocalDateTime uploadDate) {
         this.uploadDate = uploadDate;
     }
 
@@ -94,14 +73,6 @@ public class FileEntity {
         this.uploadedBy = uploadedBy;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getTags() {
         return tags;
     }
@@ -109,8 +80,33 @@ public class FileEntity {
     public void setTags(String tags) {
         this.tags = tags;
     }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
-     
+
+
 
 
 

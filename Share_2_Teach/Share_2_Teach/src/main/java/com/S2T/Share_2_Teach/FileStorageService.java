@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+import com.S2T.Share_2_Teach.FileEntity;  // Import for FileEntity
+import com.S2T.Share_2_Teach.FileRepository;  // Import for FileRepository
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;

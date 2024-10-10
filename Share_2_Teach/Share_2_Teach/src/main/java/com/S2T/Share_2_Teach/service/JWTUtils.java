@@ -18,7 +18,7 @@ public class JWTUtils {
 
     private SecretKey Key; // Secret key used for signing JWT tokens
 
-    private static final long EXPIRATION_TIME = 86400000L; // 24 hours in milliseconds
+    private static final long EXPIRATION_TIME = 7200000L; // 2 hours in milliseconds
 
     // Constructor initializes the secret key for JWT signing
     public JWTUtils(){

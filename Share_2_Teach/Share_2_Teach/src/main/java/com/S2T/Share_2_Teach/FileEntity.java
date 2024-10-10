@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "files")  // Specifies the table name in the database
 public class FileEntity {
 
     @Id
@@ -22,6 +23,24 @@ public class FileEntity {
     private String subject;  // Added subject field
     private String grade;    // Added grade field
     private String status;
+
+     // Default constructor
+     public FileEntity() {
+    }
+
+    // Parameterized constructor
+    public FileEntity(String fileName, String fileType, byte[] data, LocalDateTime uploadDate,
+                      String uploadedBy, String tags, String subject, String grade, String status) {
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.data = data;
+        this.uploadDate = uploadDate;
+        this.uploadedBy = uploadedBy;
+        this.tags = tags;
+        this.subject = subject;
+        this.grade = grade;
+        this.status = status;
+    }
 
     // Getters and setters
 

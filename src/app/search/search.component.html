@@ -1,0 +1,43 @@
+<div class="search-page">
+    <h2>Search Documents</h2>
+  
+    <div class="search-bar">
+      <input [(ngModel)]="searchQuery" type="text" placeholder="Search by file name or tags" />
+  
+      <!-- Dropdown for selecting tags -->
+      <select [(ngModel)]="selectedTag">
+        <option value="">All Tags</option>
+        <option *ngFor="let tag of availableTags" [value]="tag">{{ tag }}</option>
+      </select>
+  
+      <!-- Dropdown for selecting file types -->
+      <select [(ngModel)]="selectedFileType">
+        <option value="">All File Types</option>
+        <option *ngFor="let type of availableFileTypes" [value]="type">{{ type }}</option>
+      </select>
+  
+      <button class="btn btn-primary" (click)="onSearch()">Search</button>
+    </div>
+  
+    <!-- Results Section -->
+    <div class="results">
+      <div *ngIf="searchResults.length > 0; else noResults">
+        <h3>Search Results</h3>
+        <ul>
+          <li *ngFor="let file of searchResults">
+            <strong>{{ file.fileName }}</strong> ({{ file.fileType }}) - Tags: {{ file.tags }}
+            <button class="btn btn-primary btn-sm" (click)="onDownloadFile(file.fileName)">Download</button>
+            <button class="btn btn-primary btn-sm" (click)="onViewFile(file.fileName)">View Online</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Only show this message when no results are found AFTER a search is performed -->
+  <ng-template #noResults>
+  <div *ngIf="searchPerformed">
+    <p>No results found. Try something else or check spelling.</p>
+  </div>
+  </ng-template>
+  

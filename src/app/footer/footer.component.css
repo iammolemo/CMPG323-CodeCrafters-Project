@@ -1,0 +1,11 @@
+.footer {
+    background-color: black; /* Black background for the footer */
+    color: white; /* White text color */
+    padding: 20px; /* Padding around the footer */
+    text-align: center; /* Center text in the footer */
+    position: fixed; /* Fixed position for the footer */
+    bottom: 0; /* Align to the bottom of the viewport */
+    width: 100%; /* Full width of the viewport */
+    z-index: 10; /* Ensure footer is above other content */
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.5); /* Optional: Add a subtle shadow above the footer */
+}

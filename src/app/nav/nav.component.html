@@ -1,0 +1,12 @@
+<nav>
+    <ul>
+      <li><a routerLink="/landingpage">Share2Teach</a></li> <!-- Always visible -->
+      <li *ngIf="isAuthenticated"><a routerLink="/profile">Profile</a></li>
+      <li *ngIf="isAuthenticated"><a routerLink="/users">Users Management</a></li>
+      <li *ngIf="isAuthenticated"><a routerLink="/contribute">Upload Files</a></li>
+      <li *ngIf="isAuthenticated"><a routerLink="/analytics">Analytics</a></li>
+      <li *ngIf="!isAuthenticated"><a routerLink="/login">Login</a></li>
+      <li *ngIf="isAuthenticated"><a routerLink="" (click)="logout()">Logout</a></li>
+    </ul>
+  </nav>
+  

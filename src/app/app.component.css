@@ -1,0 +1,50 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Sidebar styles */
+app-sidebar {
+  position: fixed; /* Keeps the sidebar fixed */
+  width: 200px; /* Adjust width as needed */
+  height: 100vh; /* Full height */
+  top: 0; /* Aligns to the top */
+  left: 0; /* Aligns to the left */
+  background-color: black; /* Sidebar background color */
+  color: white; /* Text color */
+  z-index: 1000; /* Ensure it stays above other elements */
+}
+
+/* Content styles */
+.main-content {
+  margin-left: 200px; /* Space for the sidebar */
+  padding: 20px; /* Padding around content */
+  width: calc(100% - 200px); /* Remaining width adjusted */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Arrange items vertically */
+  justify-content: center; /* Center content vertically */
+  height: calc(100vh - 80px); /* Adjust height to fit in view */
+  overflow: hidden; /* Hide overflow */
+  background-color: white; /* Ensure the content area is white */
+}
+
+.content-wrapper {
+  display: flex; /* Use flexbox for content alignment */
+  flex-direction: column; /* Arrange items vertically */
+  justify-content: flex-start; /* Start at the top of the content area */
+  height: 100%; /* Take full height of main-content */
+}
+
+/* Footer styles */
+.footer {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,46 @@
+/* CSS for the main content */
+.main-content {
+    margin-left: 300px; /* Pushes the content right by 300px (adjust this based on sidebar width) */
+    padding: 20px; /* Provides padding inside the content */
+    width: calc(100% - 300px); /* Takes up the remaining space after margin */
+}
+
+/* Section-specific styling */
+.section {
+    margin-bottom: 20px; /* Adds space between sections */
+}
+
+h2 {
+    text-align: left; /* Left-align headers */
+    color: #333; /* Darker color for headers */
+}
+
+p {
+    text-align: justify; /* Justify text for a clean look */
+    color: #555; /* Softer color for paragraph text */
+    line-height: 1.6; /* Improves readability */
+}
+
+/* Optional background for each section */
+.about-project {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.about-website {
+    background-color: #eef7ff;
+    padding: 20px;
+}
+
+.about-founders {
+    background-color: #e7ffe7;
+    padding: 20px;
+}
+
+/* Media query for responsiveness */
+@media screen and (max-width: 768px) {
+    .main-content {
+        margin-left: 0; /* Removes margin on smaller screens */
+        width: 100%; /* Makes content full width on smaller devices */
+    }
+}

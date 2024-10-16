@@ -1,0 +1,48 @@
+/* Sidebar CSS */
+.sidebar {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove any padding */
+    position: fixed; /* Keep the sidebar fixed */
+    top: 65px; /* Align to the bottom of the navbar */
+    left: 0; /* Align to the left */
+    background-color: black; /* Black background for the sidebar */
+    width: 200px; /* Fixed width for sidebar */
+    height: calc(100vh - 130px); /* Full height minus navbar (65px) and footer (65px) */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange items vertically */
+    justify-content: space-between; /* Space items evenly within the sidebar */
+    z-index: 1; /* Ensure sidebar is above main content */
+}
+
+/* Sidebar Links */
+.sidebar ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    width: 100%; /* Full width for the list */
+    display: flex; /* Make the list a flex container */
+    flex-direction: column; /* Stack items vertically */
+    flex-grow: 1; /* Allow the list to take up available space */
+    justify-content: space-between; /* Space items evenly within the available height */
+}
+
+/* Sidebar List Item */
+.sidebar li {
+    text-align: center; /* Center links horizontally */
+}
+
+/* Sidebar Links */
+.sidebar a {
+    color: white; /* White text for links */
+    text-decoration: none; /* No underline */
+    padding: 10px 0; /* Adjusted padding for links */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth background change */
+    font-size: 18px; /* Font size for links */
+    font-weight: bold; /* Make sidebar links bold */
+}
+
+/* Hover effect for sidebar links */
+.sidebar a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background on hover */
+}

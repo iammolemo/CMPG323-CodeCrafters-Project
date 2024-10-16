@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.S2T.Share_2_Teach.Share2TeachApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.117 s -- in com.S2T.Share_2_Teach.Share2TeachApplicationTests

@@ -1,0 +1,51 @@
+<div class="container">
+    <nav>
+      <div class="navbar">
+        <div class="logo">
+          <img src="/assets/logo.jpg" alt="Logo">
+          <h2>S2T</h2>
+        </div>
+        <ul>
+          <li><a href="#"><i class="fas fa-user"></i><span class="nav-item">Home</span></a></li>
+          <li><a href="#"><i class="fas fa-chart-bar"></i><span class="nav-item">Courses</span></a></li>
+          <li><a href="#"><i class="fas fa-tasks"></i><span class="nav-item">Analytics</span></a></li>
+          <li><a href="#"><i class="fab fa-dochub"></i><span class="nav-item">Documents</span></a></li>
+          <li><a href="#"><i class="fas fa-cog"></i><span class="nav-item">Settings</span></a></li>
+          <li><a href="#"><i class="fas fa-question-circle"></i><span class="nav-item">FAQ</span></a></li>
+          <li><a href="#" class="logout"><i class="fas fa-sign-out-alt"></i><span class="nav-item">Logout</span></a></li>
+        </ul>
+      </div>
+    </nav>
+  
+    <section class="main">
+      <div class="main-top">
+        <p>Explore Share2Teach!</p>
+      </div>
+  
+      <div class="main-body">
+        <h1>Recent Courses</h1>
+  
+        <!-- Form for content upload -->
+        <div class="upload-form">
+          <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+              <input matInput placeholder="Content Title" formControlName="contentTitle">
+            </mat-form-field>
+            <input type="file" (change)="onFileSelect($event)">
+            <button mat-raised-button type="submit">Upload</button>
+          </form>
+        </div>
+  
+        <div class="course-list">
+          <div *ngFor="let course of courses" class="course_card">
+            <div class="course_details">
+              <h2>{{ course.title }}</h2>
+              <p>{{ course.overview }}</p>
+              <span>Duration: {{ course.duration }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  

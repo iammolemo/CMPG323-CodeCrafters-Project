@@ -1,0 +1,52 @@
+/* Main content styles for Landing Page */
+.main-content {
+    margin-left: 200px; /* Space for sidebar */
+    background-color: white; /* White background for main content */
+    color: black; /* Dark text for readability */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange items vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Horizontally center content */
+    height: calc(100vh - 130px); /* Full height minus navbar (65px) and footer (65px) */
+    text-align: center; /* Center text alignment */
+    padding: 20px; /* Padding for content */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    overflow: hidden; /* Prevent scrollbars from appearing */
+}
+
+/* Headings and paragraphs margins */
+h1, h2 {
+    margin: 10px 0; /* Margin for headings */
+}
+
+p {
+    margin: 10px 0 20px; /* Margin for paragraphs: top 10px, bottom 20px */
+}
+
+/* Footer styles */
+.footer {
+    background-color: black; /* Black background for the footer */
+    color: white; /* White text color */
+    padding: 20px; /* Padding around the footer */
+    text-align: center; /* Center text in the footer */
+    position: fixed; /* Fixed position for the footer */
+    bottom: 0; /* Align to the bottom of the viewport */
+    width: 100%; /* Full width of the viewport */
+    z-index: 10; /* Ensure footer is above other content */
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.5); /* Optional: Add a subtle shadow above the footer */
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 600px) {
+    .main-content {
+        margin-left: 0; /* Remove left margin for small screens */
+        padding: 10px; /* Add padding for smaller screens */
+        height: auto; /* Allow height to adjust */
+    }
+
+    .sidebar {
+        position: relative; /* Make sidebar relative for small screens */
+        height: auto; /* Reset height for small screens */
+        top: 0; /* Reset top position */
+    }
+}

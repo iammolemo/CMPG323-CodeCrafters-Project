@@ -1,0 +1,35 @@
+<div class="contribute-container">
+  <h2>Contribute a File</h2>
+  <form [formGroup]="contributeForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="file">Choose a file:</label>
+      <input type="file" (change)="onFileSelected($event)" id="file" required />
+    </div>
+
+    <div>
+      <label for="subject">Subject:</label>
+      <input type="text" formControlName="subject" id="subject" required />
+      <div *ngIf="contributeForm.get('subject')?.invalid && contributeForm.get('subject')?.touched">
+        Subject is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="grade">Grade:</label>
+      <input type="text" formControlName="grade" id="grade" required />
+      <div *ngIf="contributeForm.get('grade')?.invalid && contributeForm.get('grade')?.touched">
+        Grade is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="tags">Tags:</label>
+      <input type="text" formControlName="tags" id="tags" required />
+      <div *ngIf="contributeForm.get('tags')?.invalid && contributeForm.get('tags')?.touched">
+        Tags are required.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="contributeForm.invalid || !selectedFile">Upload</button>
+  </form>
+</div>

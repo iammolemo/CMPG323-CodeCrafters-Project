@@ -1,0 +1,13 @@
+<div class="faq-container">
+    <h1>Frequently Asked Questions</h1>
+    
+    <div *ngFor="let faq of faqs; let i = index" class="faq-item">
+      <div class="faq-question" (click)="toggleAnswer(i)">
+        <h2>{{ faq.question }}</h2>
+        <i class="fas" [ngClass]="selectedQuestionIndex === i ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+      </div>
+      <div *ngIf="selectedQuestionIndex === i" class="faq-answer">
+        <p>{{ faq.answer }}</p>
+      </div>
+    </div>
+  </div>

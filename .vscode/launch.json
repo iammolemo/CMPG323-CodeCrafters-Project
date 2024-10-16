@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Share2TeachApplication<Share_2_Teach>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.S2T.Share_2_Teach.Share2TeachApplication",
+            "projectName": "Share_2_Teach",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
